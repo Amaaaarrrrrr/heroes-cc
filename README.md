@@ -13,12 +13,12 @@ Validation: SQLAlchemy Validations
 
 # Setup Instructions ⚙️
 ## 1. Clone the Repository
-bash
+
 git clone https://github.com/your-username/superheroes-api.git
 cd superheroes-api
 
 ## 2. Create Virtual Environment & Activate
-bash
+
 ### Linux / MacOS
 python3 -m venv env
 source env/bin/activate
@@ -28,18 +28,18 @@ python -m venv env
 env\Scripts\activate
 
 ## 3. Install Dependencies
-bash
+
 pip install -r requirements.txt
 
 ## 4. Set Up Environment Variables
 Create a .env file and add:
 
-ini
+
 FLASK_APP=app
 FLASK_ENV=development
 
 ## 5. Database Migration
-bash
+
 flask db init
 flask db migrate -m "Initial migration"
 flask db upgrade
@@ -47,14 +47,14 @@ flask db upgrade
 ## 6. Seed the Database 
 run the command seed.py
 
-7. Run the Server
-bash
+## 7. Run the Server
+
 flask run
 
 The server will run on: http://127.0.0.1:5000
 
 ## API Routes & Sample Requests/Responses 🚦
-GET /heroes
+### GET /heroes
 Returns a list of all heroes.
 
 Request:
@@ -67,7 +67,8 @@ json
   { "id": 1, "name": "Kamala Khan", "super_name": "Ms. Marvel" },
   { "id": 2, "name": "Doreen Green", "super_name": "Squirrel Girl" }
 ]
-GET /heroes/:id
+
+### GET /heroes/:id
 Returns a hero along with their associated powers.
 
 Request:
@@ -98,11 +99,13 @@ Error Response (Hero Not Found):
 
 json
 { "error": "Hero not found" }
-GET /powers
+
+###  GET /powers
 Returns a list of all powers.
 
 Request:
-http
+HTTP
+
 GET /powers
 
 Response:
@@ -111,7 +114,8 @@ json
   { "id": 1, "name": "super strength", "description": "gives super-human strength" },
   { "id": 2, "name": "flight", "description": "fly through the skies at supersonic speed" }
 ]
-GET /powers/:id
+
+### GET /powers/:id
 Returns a specific power.
 
 Request:
@@ -129,11 +133,13 @@ Error Response (Power Not Found):
 
 json
 { "error": "Power not found" }
-PATCH /powers/:id
+
+### PATCH /powers/:id
 Updates a power's description.
 
 Request:
-http
+HTTP
+
 PATCH /powers/1
 Content-Type: application/json
 
@@ -156,7 +162,8 @@ Validation Error (Description Too Short):
 
 json
 { "errors": ["Description must be at least 20 characters long"] }
-POST /hero_powers
+
+### POST /hero_powers
 Creates a new HeroPower relationship.
 
 Request:
@@ -192,7 +199,9 @@ Error Response (Validation Error):
 
 json
 { "errors": ["Strength must be 'Strong', 'Weak', or 'Average'"] }
-Error Handling 🔧
+
+
+## Error Handling 🔧
 404 Not Found for invalid resources
 
 400 Bad Request for validation errors
